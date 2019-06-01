@@ -1,0 +1,103 @@
+.grid-2 {
+    grid-template-columns: 1fr 1fr;
+}
+
+.offer-strip-full {
+    background: green;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 0;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    display: inline-block;
+    padding: .3rem 1rem;
+}
+
+.big-image {
+    height: 100% !important;
+    width: 100% !important;
+    max-height: 450px !important;
+    max-width: 450px !important;
+    display: block;
+    margin: auto !important;
+}
+
+.small-image {
+    border: 2px solid #ccc;
+    margin-right: .5rem;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+}
+
+.active-small-image {
+    border: 2px solid #f99b20;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.loading {
+    border-radius: 10px;
+    height: 100% !important;
+    width: 100% !important;
+    background: linear-gradient(274deg, #b0b4b3, #ffffff, #d1d1d1);
+    background-size: 300% 500%;
+    -webkit-animation: AnimationName 2s cubic-bezier(0, 0.48, 0.84, 0.89) infinite;
+    -moz-animation: AnimationName 2s cubic-bezier(0, 0.48, 0.84, 0.89) infinite;
+    -o-animation: AnimationName 2s cubic-bezier(0, 0.48, 0.84, 0.89) infinite;
+    animation: AnimationName 2s cubic-bezier(0, 0.48, 0.84, 0.89) infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 51%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 51%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-o-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 51%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 51%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}

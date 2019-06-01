@@ -1,0 +1,22 @@
+header {
+    font-size: 1.6rem;
+    font-family: 'Pacifico';
+    padding: 1rem 2rem;
+    color: #424242;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.btn-cart:hover {
+    color: #f99b20;
+}

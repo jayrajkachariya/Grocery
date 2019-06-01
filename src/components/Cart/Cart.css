@@ -1,0 +1,29 @@
+.cart-card {
+    width: 50%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 1px 5px #ccc;
+    border-radius: 5px;
+    padding: 1em;
+    color: #463c38;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+@media screen and (min-width: 750px) and (max-width: 1000px){
+    .cart-card {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .cart-card {
+        width: 100%;
+        margin: 1rem 0;
+        padding: 5px;
+    }
+    .container {
+        padding: 0;
+    }
+}

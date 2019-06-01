@@ -1,0 +1,21 @@
+.button {
+    padding: .7rem 1rem;
+    border-radius: 2rem;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1;
+    white-space: nowrap;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    background: transparent;
+    text-transform: capitalize;
+}
+
+.button:disabled {
+    cursor: not-allowed !important;
+    color: #888 !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03), 0 1px 0 rgba(0, 0, 0, 0.05),
+        0 1px 3px rgba(0, 0, 0, 0.1);
+}
