@@ -1,11 +1,17 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import { addProductToCart, loadProducts, setSelectedProductForView, subtractProductFromCart } from "../../actions";
-import "./ProductGrid.css";
-import Button from "../Button";
-import { push } from "react-router-redux";
-import { QtyView } from "../Cart/Cart";
+import {
+  addProductToCart,
+  loadProducts,
+  setSelectedProductForView,
+  subtractProductFromCart
+} from '../../actions';
+import './ProductGrid.css';
+import Button from '../Button';
+import { push } from 'connected-react-router';
+
+import { QtyView } from '../Cart/Cart';
 
 class ProductGrid extends Component {
   componentDidMount() {
@@ -14,7 +20,11 @@ class ProductGrid extends Component {
 
   viewProduct = product => {
     this.props.setSelectedProductForView(product);
-    this.props.pushOnHistory(`/view-product/${encodeURI(product.productCategory)}/${encodeURI(product.productSubCategory)}/${encodeURI(product.productName)}`);
+    this.props.pushOnHistory(
+      `/view-product/${encodeURI(product.productCategory)}/${encodeURI(
+        product.productSubCategory
+      )}/${encodeURI(product.productName)}`
+    );
   };
 
   render() {
@@ -23,53 +33,48 @@ class ProductGrid extends Component {
       <div className="content">
         <section className="grid">
           {products.map(product => (
-            <div
-              key={product._id}
-              className="item item-1"
-            >
+            <div key={product._id} className="item item-1">
               <div className="offer-strip">{product.productDiscountInPercent}% OFF</div>
               <div className="card-image">
-                <img
-                  className="img"
-                  src={product.img[0]}
-                  alt={product.productName}
-                />
+                <img className="img" src={product.img[0]} alt={product.productName} />
               </div>
               <div className="card-product-name">{product.productName}</div>
-              <br/>
+              <br />
               <div className="d-flex align-item-center justify-content-between">
                 <div className="d-flex align-item-center">
-                  <div
-                    className="card-product-mrp">&#8377; {Math.floor(product.productMRP - (product.productMRP * product.productDiscountInPercent / 100))}</div>
-                  <div className="card-product-false-mrp">&#8377; <s>{product.productMRP}</s></div>
+                  <div className="card-product-mrp">
+                    &#8377;{' '}
+                    {Math.floor(
+                      product.productMRP -
+                        (product.productMRP * product.productDiscountInPercent) / 100
+                    )}
+                  </div>
+                  <div className="card-product-false-mrp">
+                    &#8377; <s>{product.productMRP}</s>
+                  </div>
                 </div>
                 <div className="card-product-mrp">{product.weightVariant}</div>
               </div>
-              <br/>
+              <br />
               <div className="d-flex align-item-center justify-content-between">
-                <Button
-                  onClick={() => this.viewProduct(product)}
-                  ClassName="button-view-details"
-                >
+                <Button onClick={() => this.viewProduct(product)} ClassName="button-view-details">
                   View details
                 </Button>
 
-                {
-                  this.props.cart.find(x => x._id === product._id)
-                    ?
-                    <QtyView count={this.props.cart.find(x => x._id === product._id).count}
-                             addProductToCart={() => this.props.addProductToCart(product)}
-                             subtractProductFromCart={() => this.props.subtractProductFromCart(product)}
-                    />
-                    :
-                    <Button
-                      onClick={() => this.props.addProductToCart(product)}
-                      ClassName="button-add-to-cart my-1"
-                    >
-                      Add to Cart
-                    </Button>
-                }
-
+                {this.props.cart.find(x => x._id === product._id) ? (
+                  <QtyView
+                    count={this.props.cart.find(x => x._id === product._id).count}
+                    addProductToCart={() => this.props.addProductToCart(product)}
+                    subtractProductFromCart={() => this.props.subtractProductFromCart(product)}
+                  />
+                ) : (
+                  <Button
+                    onClick={() => this.props.addProductToCart(product)}
+                    ClassName="button-add-to-cart my-1"
+                  >
+                    Add to Cart
+                  </Button>
+                )}
               </div>
             </div>
           ))}

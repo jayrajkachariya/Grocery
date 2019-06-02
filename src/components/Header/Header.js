@@ -1,11 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import "./Header.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import './Header.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-import { connect } from "react-redux";
-import { push } from "react-router-redux";
+import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
+import { withRouter } from 'react-router';
 
 class Header extends Component {
   onCart = () => {
@@ -17,13 +18,17 @@ class Header extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <header>
-        <div className="btn" onClick={this.onHome}>Grocery Shop</div>
-        <div className="btn" onClick={this.onCart}>
-          <FontAwesomeIcon icon={faShoppingCart} color={"#424242"} className="btn-cart"/>
-          <i className="fas fa-camera"/>
+        <div className="btn" onClick={this.onHome}>
+          Grocery Shop
         </div>
+        {this.props.location.pathname !== '/cart' && (
+          <div className="btn" onClick={this.onCart}>
+            <FontAwesomeIcon icon={faShoppingCart} color={'#424242'} className="btn-cart" />
+          </div>
+        )}
       </header>
     );
   }
@@ -37,4 +42,9 @@ const mapDispatchToProps = dispatch => ({
   pushOnHistory: route => dispatch(push(route))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Header)
+);
